@@ -73,14 +73,28 @@
 
     </div>
     <script>
+
+      function desabilitarJogo(){
+        var caixa_texto = document.getElementById('NMPalpite');
+        var botao_adivinhar = document.getElementById('BTNAdivinhar');
+        botao_adivinhar.disabled = true;
+        caixa_texto.disabled = true;
+        
+        botao_adivinhar.style.backgroundColor =  '#DCDCDC';
+      }
+
       function voltarCorOriginalBotao(){
         var botao_adivinhar = document.getElementById('BTNAdivinhar');
-        botao_adivinhar.style.backgroundColor = '#28a745';
+        if( botao_adivinhar.disabled == false){
+            botao_adivinhar.style.backgroundColor = '#28a745';
+        }
       }
 
       function escurecerBotao(){
         var botao_adivinhar = document.getElementById('BTNAdivinhar');
-        botao_adivinhar.style.backgroundColor = '#F5DD27';
+         if( botao_adivinhar.disabled == false){
+            botao_adivinhar.style.backgroundColor = '#F5DD27';
+         }
       }
 
 
@@ -117,7 +131,8 @@
          }
 
          if(qtdTentativas == 0){
-          div_mensagem.textContent = "Fim de jogo! O número secreto era "+numeroSecreto;
+            desabilitarJogo();
+            div_mensagem.textContent = "Fim de jogo! O número secreto era "+numeroSecreto;
          }
           
       }
